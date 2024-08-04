@@ -16,9 +16,9 @@
       <ul class="nav-links">
         <li class="link" id="aboutBtn"><a href="#about">About</a></li>
         <li class="link" id="artistsBtn"><a href="#artists">Artists</a></li>
-        <li class="link"><a href="#">Collection</a></li>
+        <li class="link" id="artworkBtn"><a href="#artwork">Artwork</a></li>
       </ul>
-      <button class="btn">Contact Us</button>
+      <button class="btn" id="contactBtn">Contact Us</button>
     </nav>
     <div class="sections-container">
       <div class="section section1" id="section1">
@@ -28,26 +28,20 @@
             Welcome to <span class="artora">Artora</span>, where creativity
             meets opportunity.
           </h1>
-          <p>
-            <span class="p1"><b> Our mission is simple: </b><br /></span>
-            To connect artists with collectors who appreciate and cherish their
-            work. <br />Explore a curated selection of stunning artwork from
-            talented artists around the world. <br />Whether you're looking to
-            find your next masterpiece or discover emerging talent, <br />Artora
-            is your gateway to the art world. Dive in and let the art inspire
-            you.
-          </p>
-          <button class="expbtn" id="exploreBtn">Explore</button>
         </div>
       </div>
 
       <div class="section section2" id="section2">
         <div class="container">
           <div class="menu">
-            <button class="menu-option" data-target="content1">About Us</button>
-            <button class="menu-option" data-target="content2">Approach</button>
+            <button class="menu-option" data-target="content1">
+              <b>About Us</b>
+            </button>
+            <button class="menu-option" data-target="content2">
+              <b>Approach</b>
+            </button>
             <button class="menu-option" data-target="content3">
-              Our Values
+              <b>Our Values</b>
             </button>
           </div>
           <div class="menu-content" id="content1">
@@ -184,28 +178,26 @@
             <div class="item">
               <img src="images/Amit-Bhar.jpg" />
               <div class="info">
-                <div class="author">Hriday</div>
+                <div class="author">Indian Contemporary Artist</div>
                 <div class="title">Amit Bhar</div>
-                <div class="topic">Art Name</div>
+                <div class="topic">Banaras Night Ghat</div>
                 <div class="des">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  <br />
-                  Eum molestiae a necessitatibus dignissimos sintnatus autem
-                  consectetur, ab libero. <br />
-                  Iure cumque beatae rem debitis distinctio maxime odio,
-                  molestiae officia sed.
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                  molestiae a necessitatibus dignissimos sintnatus autem
+                  consectetur, ab libero. Iure cumque beatae rem debitis
+                  distinctio maxime odio, molestiae officia sed.
                 </div>
                 <div class="buttons">
-                  <button>View Collection</button>
+                  <button>Explore</button>
                 </div>
               </div>
             </div>
             <div class="item">
               <img src="images/Siddhart-Shingade.jpg" />
               <div class="info">
-                <div class="author">Hriday</div>
+                <div class="author">Indian Contemporary Artist</div>
                 <div class="title">Siddhart Shingade</div>
-                <div class="topic">Art Name</div>
+                <div class="topic">Painting Name</div>
                 <div class="des">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
                   molestiae a necessitatibus dignissimos sint natus autem
@@ -213,16 +205,16 @@
                   distinctio maxime odio, molestiae officia sed.
                 </div>
                 <div class="buttons">
-                  <button>View Collection</button>
+                  <button>Explore</button>
                 </div>
               </div>
             </div>
             <div class="item">
               <img src="images/S-Sivabalan.jpg" />
               <div class="info">
-                <div class="author">Hriday</div>
+                <div class="author">Indian Contemporary Artist</div>
                 <div class="title">S. Sivabalan</div>
-                <div class="topic">Art Name</div>
+                <div class="topic">Painting Name</div>
                 <div class="des">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
                   molestiae a necessitatibus dignissimos sint natus autem
@@ -230,16 +222,16 @@
                   distinctio maxime odio, molestiae officia sed.
                 </div>
                 <div class="buttons">
-                  <button>View Collection</button>
+                  <button>Explore</button>
                 </div>
               </div>
             </div>
             <div class="item">
               <img src="images/Sudip-Roy.jpg" />
               <div class="info">
-                <div class="author">Hriday</div>
+                <div class="author">Indian Contemporary Artist</div>
                 <div class="title">Sudip Roy</div>
-                <div class="topic">Art Name</div>
+                <div class="topic">Painting Name</div>
                 <div class="des">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
                   molestiae a necessitatibus dignissimos sint natus autem
@@ -247,7 +239,7 @@
                   distinctio maxime odio, molestiae officia sed.
                 </div>
                 <div class="buttons">
-                  <button>View Collection</button>
+                  <button>Explore</button>
                 </div>
               </div>
             </div>
@@ -290,11 +282,161 @@
       </div>
 
       <div class="section section4" id="section4">
-        <h1>Explore Stunning Artwork</h1>
+        <div>
+          <h2>Artwork from all ends of the Spectrum.</h2>
+        </div>
+        <div class="artwork-slider">
+          <div class="slider-wrapper">
+            <div class="slider">
+              <div class="tnitem">
+                <img src="images/Siddhart-Shingade.jpg" />
+                <div class="overlay"><a href="#">Modern Art</a></div>
+              </div>
+              <div class="tnitem">
+                <img src="images/S-Sivabalan.jpg" />
+                <div class="overlay"><a href="#">Abstract Art</a></div>
+              </div>
+              <div class="tnitem">
+                <img src="images/Sudip-Roy.jpg" />
+                <div class="overlay"><a href="#">Sex Art</a></div>
+              </div>
+              <div class="tnitem">
+                <img src="images/Amit-Bhar.jpg" />
+                <div class="overlay"><a href="#">Contemporary Art</a></div>
+              </div>
+              <div class="tnitem">
+                <img src="images/Amit-Bhar.jpg" />
+                <div class="overlay"><a href="#">Ronik Jain</a></div>
+              </div>
+              <div class="tnitem">
+                <img src="images/Amit-Bhar.jpg" />
+                <div class="overlay"><a href="#">Sorry</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="section section5" id="section5">
-        <h1>Explore Stunning Artwork</h1>
+        <footer>
+          <div class="footer-container">
+            <div class="contact-details">
+              <div class="contact-info">
+                <ul class="contact-list">
+                  <div class="info">
+                    <li class="item">
+                      <div class="icon">
+                        <img src="images/icons8-location-64.png" />
+                      </div>
+                      Find Us
+                    </li>
+                    <div class="address">
+                      Goregaon West, Siddhart Nagar <br />
+                      Mumbai - 400104, Maharashtra
+                    </div>
+                  </div>
+                  <div class="info">
+                    <li class="item">
+                      <div class="icon">
+                        <img src="images/icons8-call-64.png" />
+                      </div>
+                      Call Us
+                    </li>
+                    <div class="number">
+                      +91 77770 24826<br />+91 83692 96752
+                    </div>
+                  </div>
+                  <div class="info">
+                    <li class="item">
+                      <div class="icon">
+                        <img src="images/icons8-envelope-64.png" />
+                      </div>
+                      Mail Us
+                    </li>
+                    <div class="mail">
+                      <a
+                        href="https://mail.google.com/mail/?view=cm&to=info@artoraindia.com&su=&body="
+                        target="”_blank”"
+                        >info@artoraindia.com</a
+                      >
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="newsletter">
+              <div class="newsletter-container">
+                <p>
+                  An Artist looking to sell art? <br />
+                  A Collector looking for the next score? <br />
+                  <b>Subscribe Now</b> and we will contact you!
+                </p>
+                <div class="form">
+                  <form id="newsletter-form">
+                    <label for="name">Name:</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Enter Name"
+                      required
+                    />
+                    <label for="email">Email:</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Enter Email"
+                      required
+                    />
+                    <button type="submit">Subscribe</button>
+                  </form>
+                  <div id="response"></div>
+                </div>
+              </div>
+            </div>
+            <div class="line"></div>
+
+            <div class="footer-links">
+              <div class="social-links">
+                <div class="legal">
+                  <h3>
+                    <a href="#">Terms of Use</a>
+                  </h3>
+                  <h3>
+                    <a href="#">Privacy Policy</a>
+                  </h3>
+                </div>
+                <ul>
+                  <li class="item">
+                    <a href="#"><img src="images/icons8-facebook-64.png" /></a>
+                  </li>
+                  <li class="item">
+                    <a href="#"><img src="images/icons8-instagram-64.png" /></a>
+                  </li>
+                  <li class="item">
+                    <a href="#"><img src="images/icons8-twitterx-64.png" /></a>
+                  </li>
+                  <li class="item">
+                    <a href="#"><img src="images/icons8-youtube-64.png" /></a>
+                  </li>
+                  <li class="item">
+                    <a href="#"><img src="images/icons8-linkedin-64.png" /></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="line"></div>
+            <div class="copyright">
+              <span class="copy"
+                ><span>&copy</span>2024. Artora India. All Rights
+                Reserved.</span
+              >
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
     <script src="script.js"></script>

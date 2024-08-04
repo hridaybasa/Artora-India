@@ -30,23 +30,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const handleKeydown = (event) => {
+    if (isScrolling) return; // Ignore key press if already scrolling
+
+    if (event.key === "ArrowDown") {
+      // Scrolling down
+      if (currentSection < sections.length - 1) {
+        currentSection++;
+        scrollToSection(currentSection);
+      }
+    } else if (event.key === "ArrowUp") {
+      // Scrolling up
+      if (currentSection > 0) {
+        currentSection--;
+        scrollToSection(currentSection);
+      }
+    }
+  };
+
   window.addEventListener("scroll", () => {
     currentSection = Math.floor(window.scrollY / window.innerHeight);
   });
 
   window.addEventListener("wheel", handleScroll);
+  window.addEventListener("keydown", handleKeydown);
 
-  window.onload = () => {
-    scrollToSection(0); // Ensure it scrolls to section1 on page load
-  };
-
-  const exploreBtn = document.getElementById("exploreBtn");
-  exploreBtn.addEventListener("click", () => {
-    if (currentSection < sections.length - 1) {
-      currentSection++;
-      scrollToSection(currentSection);
+  window.onload = function () {
+    // Check if the page was reloaded
+    const perfEntries = performance.getEntriesByType("navigation");
+    if (perfEntries.length > 0 && perfEntries[0].type === "reload") {
+      window.location.href = "index.html";
     }
-  });
+  };
 
   // Handle the "About" button click
   const aboutBtn = document.querySelector(".nav-links .link a[href='#about']");
@@ -66,7 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       scrollToSection(2);
       currentSection = 2; // Update currentSection to section3
-      showContent();
+    });
+  }
+
+  const artworkBtn = document.querySelector(
+    ".nav-links .link a[href='#artwork']"
+  );
+  if (artworkBtn) {
+    artworkBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToSection(3);
+      currentSection = 3; // Update currentSection to section3
+    });
+  }
+
+  const contactBtn = document.getElementById("contactBtn");
+  if (contactBtn) {
+    contactBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToSection(4);
+      currentSection = 4; // Update currentSection to section4
     });
   }
 
@@ -133,4 +167,49 @@ document.addEventListener("DOMContentLoaded", () => {
       carouselDom.classList.remove("prev");
     }, timeRunning);
   }
+
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbwXL5oKO7-Yu8OwQL6XD3-tDqwxWZhZrWXXY7aslkVrGL25bCZP4xVkN05R3dEx3iEazA/exec"; // replace with your Google Apps Script URL
+  const form = document.forms["newsletter-form"];
+  const responseDiv = document.getElementById("response");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    responseDiv.innerHTML = "Submitting...";
+
+    fetch(scriptURL, { method: "POST", body: new FormData(form) })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.result === "success") {
+          responseDiv.innerHTML = "Thank you for subscribing!";
+          form.reset();
+        } else {
+          responseDiv.innerHTML = "There was an error. Please try again.";
+        }
+      })
+      .catch((error) => {
+        responseDiv.innerHTML = "There was an error. Please try again.";
+        console.error("Error!", error.message);
+      });
+  });
+
+  const slider = document.querySelector(".artwork-slider .slider");
+  const slides = document.querySelectorAll(".artwork-slider .tnitem");
+  const totalSlides = slides.length;
+
+  // Clone the slides to create the infinite loop effect
+  for (let i = 0; i < totalSlides; i++) {
+    const clone = slides[i].cloneNode(true);
+    slider.appendChild(clone);
+  }
+
+  // Automatic scrolling
+  function autoScroll() {
+    slider.scrollLeft += 1;
+    if (slider.scrollLeft >= slider.scrollWidth / 2) {
+      slider.scrollLeft = 0;
+    }
+  }
+
+  let sliderAutoScroll = setInterval(autoScroll, 20);
 });
