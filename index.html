@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
     <title>Artora India</title>
   </head>
   <body>
@@ -13,12 +14,23 @@
           <img src="images/artora-logo.png" />
         </a>
       </div>
-      <ul class="nav-links">
+      <div class="nav-toggle" id="navToggle">☰</div>
+      <ul class="nav-links" id="navLinks">
         <li class="link" id="aboutBtn"><a href="#about">About</a></li>
         <li class="link" id="artistsBtn"><a href="#artists">Artists</a></li>
         <li class="link" id="artworkBtn"><a href="#artwork">Artwork</a></li>
       </ul>
       <button class="btn" id="contactBtn">Contact Us</button>
+      <ul class="nav-links-mobile" id="navLinksMobile">
+        <li class="link" id="aboutBtnMobile"><a href="#about">About</a></li>
+        <li class="link" id="artistsBtnMobile">
+          <a href="#artists">Artists</a>
+        </li>
+        <li class="link" id="artworkBtnMobile">
+          <a href="#artwork">Artwork</a>
+        </li>
+        <li><a href="#" id="contactBtnMobile">Contact Us</a></li>
+      </ul>
     </nav>
     <div class="sections-container">
       <div class="section section1" id="section1">

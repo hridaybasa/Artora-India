@@ -212,4 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let sliderAutoScroll = setInterval(autoScroll, 20);
+
+  const navToggle = document.getElementById("navToggle");
+  const navLinksMobile = document.getElementById("navLinksMobile");
+
+  navToggle.addEventListener("click", () => {
+    navLinksMobile.classList.toggle("active");
+  });
 });
