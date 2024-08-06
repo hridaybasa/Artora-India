@@ -279,4 +279,35 @@ document.addEventListener("DOMContentLoaded", () => {
   carouselDom.addEventListener("touchstart", handleCarouselTouchStart);
   carouselDom.addEventListener("touchmove", handleCarouselTouchMove);
   carouselDom.addEventListener("touchend", handleCarouselTouchEnd);
+
+  // Touch events for artwork-slider functionality
+  let artworkStartX;
+  let artworkEndX;
+
+  const handleArtworkTouchStart = (event) => {
+    artworkStartX = event.touches[0].clientX;
+  };
+
+  const handleArtworkTouchMove = (event) => {
+    artworkEndX = event.touches[0].clientX;
+  };
+
+  const handleArtworkTouchEnd = () => {
+    if (artworkStartX > artworkEndX + 50) {
+      // Swiped left
+      clearInterval(sliderAutoScroll);
+      slider.scrollLeft += slider.clientWidth;
+      sliderAutoScroll = setInterval(autoScroll, 20);
+    } else if (artworkStartX < artworkEndX - 50) {
+      // Swiped right
+      clearInterval(sliderAutoScroll);
+      slider.scrollLeft -= slider.clientWidth;
+      sliderAutoScroll = setInterval(autoScroll, 20);
+    }
+  };
+
+  slider.addEventListener("touchstart", handleArtworkTouchStart);
+  slider.addEventListener("touchmove", handleArtworkTouchMove);
+  slider.addEventListener("touchend", handleArtworkTouchEnd);
+});
 });
