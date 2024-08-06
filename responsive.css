@@ -140,7 +140,6 @@
     margin-bottom: 0;
   }
   .content h1 {
-    margin: 5 5 0 5;
     font-size: 3.5rem;
   }
 }
@@ -173,7 +172,6 @@
     margin-bottom: 0;
   }
   .content h1 {
-    margin: 5 5 0 5;
     font-size: 3.5rem;
   }
 }
@@ -181,7 +179,7 @@
 @media (max-width: 1568px) and (min-width: 1201px) {
   /* navbar */
   .nav-logo {
-    max-width: 120px;
+    max-width: 110px;
   }
   .nav-links {
     font-size: 1.4rem;
@@ -207,7 +205,6 @@
     padding-top: 3rem;
   }
   .content h1 {
-    margin: 5 5 0 5;
     font-size: 4rem;
   }
 }
@@ -244,7 +241,6 @@
     padding-top: 3rem;
   }
   .content h1 {
-    margin: 5 5 0 5;
     font-size: 5rem;
   }
 }

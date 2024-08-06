@@ -219,4 +219,64 @@ document.addEventListener("DOMContentLoaded", () => {
   navToggle.addEventListener("click", () => {
     navLinksMobile.classList.toggle("active");
   });
+
+  // Touch events for scroll functionality
+  let startY;
+  let endY;
+
+  const handleTouchStart = (event) => {
+    startY = event.touches[0].clientY;
+  };
+
+  const handleTouchMove = (event) => {
+    endY = event.touches[0].clientY;
+  };
+
+  const handleTouchEnd = () => {
+    if (isScrolling) return; // Ignore if already scrolling
+
+    if (startY > endY + 50) {
+      // Swiped up
+      if (currentSection < sections.length - 1) {
+        currentSection++;
+        scrollToSection(currentSection);
+      }
+    } else if (startY < endY - 50) {
+      // Swiped down
+      if (currentSection > 0) {
+        currentSection--;
+        scrollToSection(currentSection);
+      }
+    }
+  };
+
+  container.addEventListener("touchstart", handleTouchStart);
+  container.addEventListener("touchmove", handleTouchMove);
+  container.addEventListener("touchend", handleTouchEnd);
+
+  // Touch events for carousel functionality
+  let startX;
+  let endX;
+
+  const handleCarouselTouchStart = (event) => {
+    startX = event.touches[0].clientX;
+  };
+
+  const handleCarouselTouchMove = (event) => {
+    endX = event.touches[0].clientX;
+  };
+
+  const handleCarouselTouchEnd = () => {
+    if (startX > endX + 50) {
+      // Swiped left
+      showSlider("next");
+    } else if (startX < endX - 50) {
+      // Swiped right
+      showSlider("prev");
+    }
+  };
+
+  carouselDom.addEventListener("touchstart", handleCarouselTouchStart);
+  carouselDom.addEventListener("touchmove", handleCarouselTouchMove);
+  carouselDom.addEventListener("touchend", handleCarouselTouchEnd);
 });
