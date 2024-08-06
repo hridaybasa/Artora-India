@@ -310,4 +310,3 @@ document.addEventListener("DOMContentLoaded", () => {
   slider.addEventListener("touchmove", handleArtworkTouchMove);
   slider.addEventListener("touchend", handleArtworkTouchEnd);
 });
-});
