@@ -213,6 +213,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let sliderAutoScroll = setInterval(autoScroll, 20);
 
+  //Nav Toggle
+
   const navToggle = document.getElementById("navToggle");
   const navLinksMobile = document.getElementById("navLinksMobile");
 
