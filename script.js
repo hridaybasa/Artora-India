@@ -264,53 +264,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //artwork-slider
 
-  const slider = document.querySelector(".artwork-slider .slider");
-  const slides = document.querySelectorAll(".artwork-slider .tnitem");
-  const totalSlides = slides.length;
+  // const slider = document.querySelector(".artwork-slider .slider");
+  // const slides = document.querySelectorAll(".artwork-slider .tnitem");
+  // const totalSlides = slides.length;
 
   // Clone the slides to create the infinite loop effect
-  for (let i = 0; i < totalSlides; i++) {
-    const clone = slides[i].cloneNode(true);
-    slider.appendChild(clone);
-  }
+  // for (let i = 0; i < totalSlides; i++) {
+  //   const clone = slides[i].cloneNode(true);
+  //   slider.appendChild(clone);
+  // }
 
-  // Automatic scrolling
-  function autoScroll() {
-    slider.scrollLeft += 1;
-    if (slider.scrollLeft >= slider.scrollWidth / 2) {
-      slider.scrollLeft = 0;
-    }
-  }
+  // // Automatic scrolling
+  // function autoScroll() {
+  //   slider.scrollLeft += 1;
+  //   if (slider.scrollLeft >= slider.scrollWidth / 2) {
+  //     slider.scrollLeft = 0;
+  //   }
+  // }
 
-  let sliderAutoScroll = setInterval(autoScroll, 20);
+  // let sliderAutoScroll = setInterval(autoScroll, 20);
 
   // Touch events for artwork-slider functionality
-  let artworkStartX;
-  let artworkEndX;
+  const slider = document.querySelector(".artwork-slider .slider");
+  let isTouching = false;
+  let fstartX = 0;
+  let scrollLeft = 0;
+  let animationPaused = false;
 
-  const handleArtworkTouchStart = (event) => {
-    artworkStartX = event.touches[0].clientX;
-  };
+  slider.addEventListener("touchstart", (e) => {
+    isTouching = true;
+    fstartX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
 
-  const handleArtworkTouchMove = (event) => {
-    artworkEndX = event.touches[0].clientX;
-  };
-
-  const handleArtworkTouchEnd = () => {
-    if (artworkStartX > artworkEndX + 50) {
-      // Swiped left
-      clearInterval(sliderAutoScroll);
-      slider.scrollLeft += slider.clientWidth;
-      sliderAutoScroll = setInterval(autoScroll, 20);
-    } else if (artworkStartX < artworkEndX - 50) {
-      // Swiped right
-      clearInterval(sliderAutoScroll);
-      slider.scrollLeft -= slider.clientWidth;
-      sliderAutoScroll = setInterval(autoScroll, 20);
+    if (!animationPaused) {
+      slider.style.animationPlayState = "paused";
+      animationPaused = true;
     }
-  };
+  });
 
-  slider.addEventListener("touchstart", handleArtworkTouchStart);
-  slider.addEventListener("touchmove", handleArtworkTouchMove);
-  slider.addEventListener("touchend", handleArtworkTouchEnd);
+  slider.addEventListener("touchmove", (e) => {
+    if (!isTouching) return;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - fstartX) * 2; // Increase the number to make the slide faster
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  slider.addEventListener("touchend", () => {
+    isTouching = false;
+    setTimeout(() => {
+      slider.style.animationPlayState = "running";
+      animationPaused = false;
+    }, 1000); // 1 second delay before resuming the animation
+  });
 });
