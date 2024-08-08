@@ -193,26 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  const slider = document.querySelector(".artwork-slider .slider");
-  const slides = document.querySelectorAll(".artwork-slider .tnitem");
-  const totalSlides = slides.length;
-
-  // Clone the slides to create the infinite loop effect
-  for (let i = 0; i < totalSlides; i++) {
-    const clone = slides[i].cloneNode(true);
-    slider.appendChild(clone);
-  }
-
-  // Automatic scrolling
-  function autoScroll() {
-    slider.scrollLeft += 1;
-    if (slider.scrollLeft >= slider.scrollWidth / 2) {
-      slider.scrollLeft = 0;
-    }
-  }
-
-  let sliderAutoScroll = setInterval(autoScroll, 20);
-
   //Nav Toggle
 
   const navToggle = document.getElementById("navToggle");
@@ -281,6 +261,28 @@ document.addEventListener("DOMContentLoaded", () => {
   carouselDom.addEventListener("touchstart", handleCarouselTouchStart);
   carouselDom.addEventListener("touchmove", handleCarouselTouchMove);
   carouselDom.addEventListener("touchend", handleCarouselTouchEnd);
+
+  //artwork-slider
+
+  const slider = document.querySelector(".artwork-slider .slider");
+  const slides = document.querySelectorAll(".artwork-slider .tnitem");
+  const totalSlides = slides.length;
+
+  // Clone the slides to create the infinite loop effect
+  for (let i = 0; i < totalSlides; i++) {
+    const clone = slides[i].cloneNode(true);
+    slider.appendChild(clone);
+  }
+
+  // Automatic scrolling
+  function autoScroll() {
+    slider.scrollLeft += 1;
+    if (slider.scrollLeft >= slider.scrollWidth / 2) {
+      slider.scrollLeft = 0;
+    }
+  }
+
+  let sliderAutoScroll = setInterval(autoScroll, 20);
 
   // Touch events for artwork-slider functionality
   let artworkStartX;
