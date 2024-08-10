@@ -73,6 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const aboutBtnMobile = document.querySelector(
+    ".nav-links-mobile .link a[href='#about']"
+  );
+  if (aboutBtnMobile) {
+    aboutBtnMobile.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToSection(1); // Assuming section2 is the second section
+      currentSection = 1; // Update currentSection to section2
+    });
+  }
+
   const artistsBtn = document.querySelector(
     ".nav-links .link a[href='#artists']"
   );
@@ -81,6 +92,17 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       scrollToSection(2);
       currentSection = 2; // Update currentSection to section3
+    });
+  }
+
+  const artistsBtnMobile = document.querySelector(
+    ".nav-links-mobile .link a[href='#artists']"
+  );
+  if (artistsBtnMobile) {
+    artistsBtnMobile.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToSection(2); // Assuming section2 is the second section
+      currentSection = 2; // Update currentSection to section2
     });
   }
 
@@ -95,6 +117,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const artworkBtnMobile = document.querySelector(
+    ".nav-links-mobile .link a[href='#artwork']"
+  );
+  if (artworkBtnMobile) {
+    artworkBtnMobile.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToSection(3); // Assuming section2 is the second section
+      currentSection = 3; // Update currentSection to section2
+    });
+  }
+
   const contactBtn = document.getElementById("contactBtn");
   if (contactBtn) {
     contactBtn.addEventListener("click", (event) => {
@@ -103,6 +136,19 @@ document.addEventListener("DOMContentLoaded", () => {
       currentSection = 4; // Update currentSection to section4
     });
   }
+
+  const contactBtnMobile = document.querySelector(
+    ".nav-links-mobile a[href='#contact']"
+  );
+  if (contactBtnMobile) {
+    contactBtnMobile.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollToSection(4); // Assuming section2 is the second section
+      currentSection = 4; // Update currentSection to section2
+    });
+  }
+
+  // About Us
 
   const firstMenuContent = document.querySelector(".menu-content");
   firstMenuContent.classList.add("active"); // Add "active" class to the first content
@@ -199,7 +245,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinksMobile = document.getElementById("navLinksMobile");
 
   navToggle.addEventListener("click", () => {
+    navToggle.classList.toggle("active");
     navLinksMobile.classList.toggle("active");
+  });
+
+  navLinksMobile.addEventListener("click", () => {
+    navToggle.classList.remove("active");
+    navLinksMobile.classList.remove("active");
   });
 
   // Touch events for scroll functionality
@@ -287,13 +339,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Touch events for artwork-slider functionality
   const slider = document.querySelector(".artwork-slider .slider");
   let isTouching = false;
-  let fstartX = 0;
+  // let startX = 0;
   let scrollLeft = 0;
   let animationPaused = false;
 
   slider.addEventListener("touchstart", (e) => {
     isTouching = true;
-    fstartX = e.touches[0].pageX - slider.offsetLeft;
+    startX = e.touches[0].pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
 
     if (!animationPaused) {
@@ -305,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
   slider.addEventListener("touchmove", (e) => {
     if (!isTouching) return;
     const x = e.touches[0].pageX - slider.offsetLeft;
-    const walk = (x - fstartX) * 2; // Increase the number to make the slide faster
+    const walk = (x - startX) * 2; // Increase the number to make the slide faster
     slider.scrollLeft = scrollLeft - walk;
   });
 
