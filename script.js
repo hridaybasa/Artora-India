@@ -176,6 +176,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Touch for About Us
+  let touchStartX, touchCurrentX;
+  let isSwiping = false;
+
+  document.querySelector(".section2").addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    isSwiping = false;
+  });
+
+  document.querySelector(".section2").addEventListener("touchmove", (e) => {
+    touchCurrentX = e.touches[0].clientX;
+    if (Math.abs(touchStartX - touchCurrentX) > 10) {
+      isSwiping = true;
+    }
+  });
+
+  document.querySelector(".section2").addEventListener("touchend", () => {
+    if (isSwiping) {
+      if (touchStartX - touchCurrentX > 50) {
+        // Swipe left
+        slideToNext();
+      } else if (touchCurrentX - touchStartX > 50) {
+        // Swipe right
+        slideToPrev();
+      }
+    }
+  });
+
+  function slideToNext() {
+    const activeOption = document.querySelector(".menu-option.active");
+    let nextOption = activeOption.nextElementSibling;
+    if (!nextOption) nextOption = document.querySelectorAll(".menu-option")[0];
+    nextOption.click();
+  }
+
+  function slideToPrev() {
+    const activeOption = document.querySelector(".menu-option.active");
+    let prevOption = activeOption.previousElementSibling;
+    if (!prevOption)
+      prevOption = document.querySelectorAll(".menu-option").slice(-1)[0];
+    prevOption.click();
+  }
+
+  // Carousel
+
   let nextDom = document.getElementById("next");
   let prevDom = document.getElementById("prev");
   let carouselDom = document.querySelector(".carousel");
@@ -213,6 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
       carouselDom.classList.remove("prev");
     }, timeRunning);
   }
+
+  // Google sheets
 
   const scriptURL =
     "https://script.google.com/macros/s/AKfycbwXL5oKO7-Yu8OwQL6XD3-tDqwxWZhZrWXXY7aslkVrGL25bCZP4xVkN05R3dEx3iEazA/exec"; // replace with your Google Apps Script URL
@@ -269,13 +316,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleTouchEnd = () => {
     if (isScrolling) return; // Ignore if already scrolling
 
-    if (startY > endY + 50) {
+    if (startY > endY + 100) {
       // Swiped up
       if (currentSection < sections.length - 1) {
         currentSection++;
         scrollToSection(currentSection);
       }
-    } else if (startY < endY - 50) {
+    } else if (startY < endY - 100) {
       // Swiped down
       if (currentSection > 0) {
         currentSection--;
@@ -315,26 +362,6 @@ document.addEventListener("DOMContentLoaded", () => {
   carouselDom.addEventListener("touchend", handleCarouselTouchEnd);
 
   //artwork-slider
-
-  // const slider = document.querySelector(".artwork-slider .slider");
-  // const slides = document.querySelectorAll(".artwork-slider .tnitem");
-  // const totalSlides = slides.length;
-
-  // Clone the slides to create the infinite loop effect
-  // for (let i = 0; i < totalSlides; i++) {
-  //   const clone = slides[i].cloneNode(true);
-  //   slider.appendChild(clone);
-  // }
-
-  // // Automatic scrolling
-  // function autoScroll() {
-  //   slider.scrollLeft += 1;
-  //   if (slider.scrollLeft >= slider.scrollWidth / 2) {
-  //     slider.scrollLeft = 0;
-  //   }
-  // }
-
-  // let sliderAutoScroll = setInterval(autoScroll, 20);
 
   // Touch events for artwork-slider functionality
   const slider = document.querySelector(".artwork-slider .slider");
